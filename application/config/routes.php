@@ -49,26 +49,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'pages';
+$route['default_controller'] = 'Pages';
 
 // POST Routes
-$route['api/cart/empty'] = 'cart/empty';
-$route['api/cart/add'] = 'cart/add';
-$route['api/cart/remove'] = 'cart/remove';
-$route['api/cart/edit'] = 'cart/edit';
-$route['api/cart/process'] = 'cart/process';
+$route['api/cart/empty'] = 'Cart/empty';
+$route['api/cart/add'] = 'Cart/add';
+$route['api/cart/remove'] = 'Cart/remove';
+$route['api/cart/edit'] = 'Cart/edit';
+$route['api/cart/process'] = 'Cart/process';
 
-$route['api/payment'] = 'cart/payment';
-$route['api/payment/(:any)'] = 'cart/payment_status/$1';
+$route['api/payment'] = 'Payment/index';
 
 // GET Routes
-$route['about-us'] = 'pages/about';
+$route['about-us'] = 'Pages/about';
 
-$route['products'] = 'products/index';
-$route['product/(:any)'] = 'products/details/$1';
+$route['products'] = 'Products/index';
+$route['product/(:any)'] = 'Products/details/$1';
 
 $route['cart'] = 'cart/index';
-$route['cart/checkout'] = 'cart/checkout';
+$route['cart/checkout'] = 'Cart/checkout';
+
+$route['payment/(:any)'] = 'Payment/status/$1';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

@@ -97,7 +97,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url("products/all") ?>">
+                    <a class="nav-link" href="<?= base_url("products") ?>">
                         Products
                     </a>
                 </li>

@@ -185,7 +185,7 @@
                                 </table>
                             </div>
                             <div class="card-footer">
-                                <a class="link" href="<?= base_url("products/all") ?>">View All Products</a>
+                                <a class="link" href="<?= base_url("products") ?>">View All Products</a>
                             </div>
                         </div>
                     </div>

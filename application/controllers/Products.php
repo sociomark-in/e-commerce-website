@@ -20,10 +20,42 @@ class Products extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		$data['page'] = [
+			'title'=> "All Products"
+		];
+		$data['breadcrumb'] = [
+			"Home" => "",
+			"Products" => "Current"
+		];
+		$this->load->view('dashboard/products/product_list', $data);
 	}
 	public function details($product)
 	{
-		$this->load->view('welcome_message');
+		$this->load->view('dashboard/products/product_detail');
+	}
+	public function new()
+	{
+		$data['page'] = [
+			'title'=> "Add New Product"
+		];
+		$data['breadcrumb'] = [
+			"Home" => "",
+			"Products" => "products",
+			"Create Product" => "Current",
+		];
+		$this->load->view('dashboard/products/product_new', $data);
+	}
+	public function edit($productId)
+	{
+		$data['page'] = [
+			'title'=> "Edit Product"
+		];
+		$data['breadcrumb'] = [
+			"Home" => "",
+			"Products" => "products",
+			"Edit Product" => "Current",
+		];
+		$data['product'] = $productId;
+		$this->load->view('dashboard/products/product_edit', $data);
 	}
 }

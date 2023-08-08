@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Pages extends CI_Controller {
+class Dashboard extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -18,31 +18,29 @@ class Pages extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/userguide3/general/urls.html
 	 */
-	public function index()
+	public function __construct()
 	{
-		$data['page']=[
-			"title" => "Home"
-		];
-		$this->load->view('pages/index', $data);
+		parent::__construct();
+		$this->load->model("User");
 	}
 	
-	public function login()
+	 public function index()
 	{
-		$data['page']=[
-			"title" => "Login"
-		];
-		$this->load->view('pages/login', $data);
-	}
-	public function register()
-	{
-		$data['page']=[
-			"title" => "Register"
-		];
-		$this->load->view('pages/register', $data);
-	}
-	
-	public function about()
-	{
-		$this->load->view('welcome_message');
+		if (isset($_SESSION['user'])) {
+			$id = $_SESSION['user']['id'];
+			$user = (array)$this->User->get($id);
+			$this->session->set_userdata(['user' => $user]);
+			// die;
+			$data = [
+				'page' => [
+					'title' => "Dashboard"
+				]
+			];
+			$data['user'] = $user;
+			$this->session->set_userdata(['user' => $user]);
+			$this->load->view('dashboard/index', $data);
+		} else {
+			redirect('/login');
+		}
 	}
 }

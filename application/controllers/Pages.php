@@ -20,7 +20,25 @@ class Pages extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		$data['page']=[
+			"title" => "Home"
+		];
+		$this->load->view('pages/index', $data);
+	}
+	
+	public function login()
+	{
+		$data['page']=[
+			"title" => "Login"
+		];
+		$this->load->view('pages/login', $data);
+	}
+	public function register()
+	{
+		$data['page']=[
+			"title" => "Register"
+		];
+		$this->load->view('pages/register', $data);
 	}
 	
 	public function about()

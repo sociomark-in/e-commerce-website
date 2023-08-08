@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------------
@@ -49,27 +49,35 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'Pages';
+$route['default_controller'] = 'Dashboard';
 
 // POST Routes
-$route['api/cart/empty'] = 'Cart/empty';
-$route['api/cart/add'] = 'Cart/add';
-$route['api/cart/remove'] = 'Cart/remove';
-$route['api/cart/edit'] = 'Cart/edit';
-$route['api/cart/process'] = 'Cart/process';
+$route['api-auth-register'] = 'Auth/register';
+$route['api-auth-login'] = 'Auth/login';
+$route['api-cart-empty'] = 'Cart/empty';
+$route['api-cart-add'] = 'Cart/add';
+$route['api-cart-remove'] = 'Cart/remove';
+$route['api-cart-edit'] = 'Cart/edit';
+$route['api-cart-process'] = 'Cart/process';
 
 $route['api/payment'] = 'Payment/index';
 
 // GET Routes
 $route['about-us'] = 'Pages/about';
+$route['login'] = 'Pages/login';
+$route['register'] = 'Pages/register';
 
+
+// /cme-admin/ routes
+$route[''] = 'Dashboard/index';
+$route['logout'] = 'auth/logout';
 $route['products'] = 'Products/index';
 $route['product/(:any)'] = 'Products/details/$1';
 
 $route['cart'] = 'cart/index';
 $route['cart/checkout'] = 'Cart/checkout';
 
-$route['payment/(:any)'] = 'Payment/status/$1';
+$route['cme-admin/payment/(:any)'] = 'Payment/status/$1';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

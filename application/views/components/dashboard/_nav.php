@@ -7,7 +7,7 @@
         </button>
         <div class="collapse navbar-collapse justify-content-between w-100" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link active" aria-current="page" href="<?= base_url('trl-admin') ?>">Home</a>
+                <a class="nav-link active" aria-current="page" href="<?= base_url('') ?>">Home</a>
                 <button type="button" class="nav-link search" data-bs-toggle="modal" data-bs-target="#searchModal">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
                         <circle cx="11" cy="11" r="8"></circle>

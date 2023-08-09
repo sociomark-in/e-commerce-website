@@ -77,56 +77,17 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        Users
-                    </a>
-                </li> -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Users
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Customers</a></li>
-                        <li><a class="dropdown-item" href="#">Vendors</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        Categories
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url("products") ?>">
-                        Products
-                    </a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Orders & Invoices
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">All Orders</a></li>
-                        <li><a class="dropdown-item" href="#">All Invoices</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        Reviews
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        Brands
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                </li>
+                <?php load_menu($menu['users'], $menu['users']['type'],$menu['users']['enable']) ?>
+                <?php load_menu($menu['categories'], $menu['categories']['type'],$menu['categories']['enable']) ?>
+                <?php load_menu($menu['products'], $menu['products']['type'],$menu['products']['enable']) ?>
+                <?php load_menu($menu['orders-invoices'], $menu['orders-invoices']['type'],$menu['orders-invoices']['enable']) ?>
+                <?php load_menu($menu['reviews'], $menu['reviews']['type'],$menu['reviews']['enable']) ?>
+                <?php load_menu($menu['brands'], $menu['brands']['type'],$menu['brands']['enable']) ?>
             </ul>
         </div>
     </div>
 </nav>
+
 <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">

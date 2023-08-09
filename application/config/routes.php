@@ -68,7 +68,7 @@ $route['login'] = 'Pages/login';
 $route['register'] = 'Pages/register';
 
 
-// /cme-admin/ routes
+// /ecm-admin/ routes
 $route[''] = 'Dashboard/index';
 $route['logout'] = 'auth/logout';
 $route['products'] = 'Products/index';

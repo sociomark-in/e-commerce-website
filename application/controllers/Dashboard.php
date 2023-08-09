@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller {
+class Dashboard extends CI_Controller
+{
 
 	/**
 	 * Index Page for this controller.
@@ -22,19 +23,23 @@ class Dashboard extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model("User");
+		$this->load->model("DashboardControl");
 	}
-	
-	 public function index()
+
+
+	public function index()
 	{
+		$this->load->helper('dashboard_menu');
 		if (isset($_SESSION['user'])) {
 			$id = $_SESSION['user']['id'];
 			$user = (array)$this->User->get($id);
+			$menu = json_decode($this->DashboardControl->load_menu(), 3);
 			$this->session->set_userdata(['user' => $user]);
-			// die;
 			$data = [
 				'page' => [
 					'title' => "Dashboard"
-				]
+				],
+				'menu' => $menu
 			];
 			$data['user'] = $user;
 			$this->session->set_userdata(['user' => $user]);

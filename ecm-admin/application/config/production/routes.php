@@ -69,17 +69,28 @@ $route['register'] = 'Pages/register';
 
 
 // /ecm-admin/ routes
-$route[''] = 'Dashboard/index';
+$route[''] = 'Pages/index';
 $route['logout'] = 'auth/logout';
 $route['products'] = 'Products/index';
 $route['products/new'] = 'Products/new';
 $route['product/(:any)/edit'] = 'Products/edit/$1';
 $route['product/(:any)'] = 'Products/details/$1';
 
+$route['payments'] = 'PaymentController/index';
+$route['payment/(:any)/edit'] = 'PaymentController/edit/$1';
+$route['payment/(:any)'] = 'PaymentController/details/$1';
+
+$route['invoices'] = 'InvoiceController/index';
+$route['invoices/new'] = 'InvoiceController/new';
+$route['invoice/(:any)/edit'] = 'InvoiceController/edit/$1';
+$route['invoice/(:any)'] = 'InvoiceController/details/$1';
+
+$route['currency/all'] = 'CurrencyController/index';
+$route['currency/new'] = 'CurrencyController/new';
+$route['currency/(:any)/edit'] = 'CurrencyController/edit/$1';
+
 $route['cart'] = 'cart/index';
 $route['cart/checkout'] = 'Cart/checkout';
-
-$route['ecm-admin/payment/(:any)'] = 'Payment/status/$1';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

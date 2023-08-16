@@ -1,0 +1,151 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap");
+$blue: #4e73df;
+$green: #1cc88a;
+$yellow: #f6c23e;
+$gray: lighten(grey, 15);
+$red: #e74a3b;
+$white: #ffff;
+$black: #2a2a2a;
+$colors: (
+	"primary": $blue,
+	"secondary": $gray,
+	"danger": $red,
+	"warning": $yellow,
+	"success": $green,
+);
+
+* {
+	font-family: "Nunito", sans-serif;
+}
+
+a {
+	color: $blue;
+	text-decoration: none;
+}
+.alert {
+	border-radius: 0;
+	border: none;
+	padding: 0.5rem 1rem;
+	&.alert-dismissible .btn-close {
+		padding: 0.3rem;
+		background-size: 0.7rem;
+	}
+}
+
+.bg {
+	@each $class, $color in $colors {
+		&-#{$class} {
+			background-color: $color;
+		}
+		@for $i from 1 through 100 {
+			&-#{$class}-subtle-#{$i} {
+				background-color: rgba($color, calc($i/100));
+			}
+		}
+	}
+}
+
+.btn {
+	border-radius: 0;
+	padding: 0.25rem 0.75rem;
+	@each $class, $color in $colors {
+		&.btn-#{$class} {
+			background-color: $color;
+			border-color: $color;
+			&:hover,
+			&:focus {
+				box-shadow: 0 0 0 0.25rem rgba($color, 0.2);
+			}
+			&:active {
+				background-color: darken($color, 5);
+			}
+		}
+	}
+}
+.form-control {
+	padding: 0.25rem 0.75rem;
+	border-radius: 0;
+}
+.form-check-input:checked {
+	background-color: $blue;
+	border-color: $blue;
+}
+
+.card{
+	border-color: rgba($color: $gray, $alpha: 0.2);
+	.card-header,
+	.card-footer{
+		border-color: rgba($color: $gray, $alpha: 0.2);
+		background: transparent;
+	}
+	.card-header{
+		b{
+			font-weight: 600;
+		}
+	}
+}
+
+.badge{
+	border-radius: 0.2rem;
+	@each $class, $color in $colors {
+		&.badge-#{$class} {
+			border: 1px solid rgba($color, 0.8);
+			background-color: rgba($color, 0.2);
+			color: $color;
+		}
+	}
+}
+
+.panel {
+	border-radius: 0;
+	.panel-header {
+		background: transparent;
+		h5 {
+			margin: 0;
+			text-align: center;
+			text-transform: uppercase;
+			font-weight: 400;
+		}
+	}
+	&.panel-default {
+		border: none;
+		border-top: 0.5rem solid;
+		border-color: lighten($color: $blue, $amount: 35);
+	}
+	&.panel-brief {
+		padding: 1rem;
+		border: none;
+		p,
+		h3 {
+			margin: 0;
+		}
+		.icon {
+			width: 3rem;
+			aspect-ratio: 1;
+			display: grid;
+			place-items: center;
+			border-radius: 0.25rem;
+		}
+		@each $class, $color in $colors {
+			&.panel-brief-#{$class} {
+				border-left: 0.5rem solid rgba($color, 0.5);
+				background-color: rgba($color, 0.02);
+				.icon{
+					background-color: rgba($color, 0.7);
+					color: $white;
+				}
+			}
+		}
+	}
+}
+
+.page-title {
+	padding: 0.5rem 1rem;
+	&.sticky {
+		position: sticky;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		background-color: $white;
+	}
+}

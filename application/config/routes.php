@@ -79,7 +79,7 @@ $route['product/(:any)'] = 'Products/details/$1';
 $route['cart'] = 'cart/index';
 $route['cart/checkout'] = 'Cart/checkout';
 
-$route['cme-admin/payment/(:any)'] = 'Payment/status/$1';
+$route['ecm-admin/payment/(:any)'] = 'Payment/status/$1';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

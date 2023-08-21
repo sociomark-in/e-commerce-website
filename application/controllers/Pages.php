@@ -47,6 +47,14 @@ class Pages extends CI_Controller
 		$this->load->view('pages/test');
 	}
 
+		
+	/**
+	 * do_upload
+	 * --------------------------------------
+	 * Codeigniter Function to Upload Multiple Files
+	 * @author Hemant Karekar, Sociomark
+	 * @return void
+	 */
 	public function do_upload()
 	{
 		$this->load->helper('string');
@@ -99,6 +107,19 @@ class Pages extends CI_Controller
 		}
 	}
 
+	/**
+	 * resize
+	 * --------------------------------------
+	 * Codeigniter Function to Resize the Images according to the ratios.
+	 * @version 1.1
+	 * @author Hemant Karekar, Sociomark
+	 * 
+	 * @param  mixed $data - $_FILES Array
+	 * @param  string $height - Height for the destination image
+	 * @param  string $preserveRatio - Preserve Ratio, Important to avoid stretched resize.
+	 * @param  bool $createThumb - Create a _thumb file. Default TRUE.
+	 * @return void
+	 */
 	public function resize(array $data, $height, $preserveRatio = TRUE, $createThumb = TRUE)
 	{
 		$resize['image_library'] = 'gd2';

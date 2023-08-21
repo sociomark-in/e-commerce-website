@@ -38,11 +38,13 @@
                             <div class="card-body">
                                 <div class="mb-3">
                                     <label for="exampleInputPassword1" class="form-label">Title</label>
-                                    <input type="text" class="form-control" id="exampleInputPassword1">
+                                    <input type="text" value="<?= $product_single['name'] ?>" class="form-control" id="exampleInputPassword1">
                                 </div>
                                 <div class="mb-3">
                                     <label for="summernote" class="form-label">Description</label>
-                                    <textarea class="form-control" rows="10" id="summernote"></textarea>
+                                    <textarea class="form-control" rows="10" id="summernote">
+                                    <?= $product_single['description'] ?>
+                                    </textarea>
                                     <script>
                                         $(document).ready(function() {
                                             $('#summernote').summernote();
@@ -74,7 +76,7 @@
                                             <label for="exampleInputPassword1" class="form-label">Price</label>
                                             <div class="input-group mb-3">
                                                 <span class="input-group-text" id="basic-addon1">&#8377;</span>
-                                                <input type="text" class="form-control" placeholder="00.00" aria-label="" aria-describedby="basic-addon1">
+                                                <input type="text" class="form-control" value="<?= $product_single['price'] ?>" placeholder="00.00" aria-label="" aria-describedby="basic-addon1">
                                             </div>
                                         </div>
                                     </div>
@@ -83,7 +85,7 @@
                                             <label for="exampleInputPassword1" class="form-label">Sale Price</label>
                                             <div class="input-group mb-3">
                                                 <span class="input-group-text" id="basic-addon1">&#8377;</span>
-                                                <input type="text" class="form-control" placeholder="00.00" aria-label="" aria-describedby="basic-addon1">
+                                                <input type="text" class="form-control" placeholder="00.00" value="<?= $product_single['sale_price'] ?>" aria-label="" aria-describedby="basic-addon1">
                                             </div>
                                         </div>
                                     </div>
@@ -98,7 +100,7 @@
                                             <label for="exampleInputPassword1" class="form-label">Cost per Item</label>
                                             <div class="input-group mb-3">
                                                 <span class="input-group-text" id="basic-addon1">&#8377;</span>
-                                                <input type="text" class="form-control" placeholder="00.00" aria-label="" aria-describedby="basic-addon1">
+                                                <input type="text" class="form-control" placeholder="00.00" value="<?= $product_single['cost_per_item'] ?>" aria-label="" aria-describedby="basic-addon1">
                                             </div>
                                         </div>
                                     </div>
@@ -106,7 +108,7 @@
                                         <div class="mb-3">
                                             <label for="exampleInputPassword1" class="form-label">Profit</label>
                                             <div class="input-group mb-3">
-                                                <input type="text" class="form-control" placeholder="00.00" aria-label="" aria-describedby="basic-addon1">
+                                                <input type="text" class="form-control" placeholder="00.00" value="<?= $product_single['profit'] ?>" aria-label="" aria-describedby="basic-addon1">
                                                 <span class="input-group-text" id="basic-addon1">&percnt;</span>
                                             </div>
                                         </div>
@@ -115,7 +117,7 @@
                                         <div class="mb-3">
                                             <label for="exampleInputPassword1" class="form-label">Margin</label>
                                             <div class="input-group mb-3">
-                                                <input type="text" class="form-control" placeholder="00.00" aria-label="" aria-describedby="basic-addon1">
+                                                <input type="text" class="form-control" placeholder="00.00" value="<?= $product_single['margin'] ?>" aria-label="" aria-describedby="basic-addon1">
                                                 <span class="input-group-text" id="basic-addon1">&percnt;</span>
                                             </div>
                                         </div>

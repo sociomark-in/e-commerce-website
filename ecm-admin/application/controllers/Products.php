@@ -9,10 +9,10 @@ class Products extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model("DashboardControl");
-		$this->load->model("ProductsModel");
 		$this->load->library("converter/currencyconverter");
 		$this->load->library("captchalibrary");
 		$this->load->helper('dashboard_menu');
+		$this->load->model('master/ProductsModel', 'master_products');
 	}
 	/**
 	 * Index Page for this controller.
@@ -36,7 +36,7 @@ class Products extends CI_Controller
 		$data = [
 			'page' => [
 				'title' => "All Products",
-				'products' => json_decode($this->ProductsModel->get(), true, 4)
+				'products' => json_decode($this->master_products->show(), true, 4)
 			],
 			'menu' => json_decode($this->DashboardControl->menu_options(), 3),
 		];
@@ -70,16 +70,18 @@ class Products extends CI_Controller
 	}
 	public function edit($productId)
 	{
+		$product = json_decode($this->master_products->show(array('id' => 1)), true, 4)[0];
 		$data = [
 			'page' => [
-				'title' => "Edit Product"
+				'title' => "Edit ". $product['name']
 			],
+			'product_single' => $product,
 			'menu' => json_decode($this->DashboardControl->menu_options(), 3)
 		];
 		$data['breadcrumb'] = [
 			"Home" => "",
 			"Products" => "products",
-			"Edit Product" => "Current",
+			"Edit ". $product['name'] => "Current",
 		];
 		$data['product'] = $productId;
 		$this->load->view('dashboard/products/product_edit', $data);

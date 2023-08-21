@@ -48,13 +48,13 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($page['products']['products'] as $product): ?>
+                                        <?php foreach ($page['products'] as $product): ?>
                                             <tr>
                                                 <td>
-                                                    <a href="<?= base_url("product/23784632784/edit") ?>">#23784632784</a>
+                                                    <a href="<?= base_url("product/".$product['id']. "/edit") ?>">#<?= $product['code'] ?></a>
                                                 </td>
                                                 <td>
-                                                    <a class="nav-link" href=""><?= $product['title'] ?></a>
+                                                    <a class="nav-link" href=""><?= $product['name'] ?></a>
                                                 </td>
                                                 <td><?= round($product['price']*$_SESSION['currency_ratio'], 3) . " ". BASE_LOCALE?></td>
                                                 <td><?= $product['price'] * 34 ?></td>

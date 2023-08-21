@@ -1,6 +1,24 @@
 <?php
 class ProductsModel extends CI_Model
 {
+    public $table;
+    public function __construct()
+    {
+        parent::__construct();
+        $this->table = 'ecm_products';
+    }
+
+    public function show(array $where = array()){
+        $result = [];
+        if(count($where)>0){
+            $result = $this->db->get_where($this->table, $where)->result();
+        }else{
+            $result = $this->db->get($this->table)->result();
+        }
+        return json_encode($result);
+    }
+
+
     public function create()
     {
     }

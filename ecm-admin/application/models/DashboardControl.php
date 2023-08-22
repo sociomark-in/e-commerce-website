@@ -19,13 +19,51 @@ class DashboardControl extends CI_Model
                         'enable' => true,
                         'type' => 'single',
                         'text' => "Customers",
-                        'url' => '/customers'
+                        'url' => '/customers/all'
                     ],
                     'vendors' => [
                         'enable' => true,
                         'type' => 'single',
                         'text' => "Vendors",
-                        'url' => '/vendors'
+                        'url' => '/vendors/all'
+                    ]
+                ]
+            ],
+            'enquiries' => [
+                'enable' => true,
+                'type' => 'dropdown',
+                'text' => 'Enquiries',
+                'dropdown' => [
+                    'customers' => [
+                        'enable' => true,
+                        'type' => 'single',
+                        'text' => "Franchise Enquiries",
+                        'url' => '/enquiries/franchise/all'
+                    ],
+                    'vendors' => [
+                        'enable' => true,
+                        'type' => 'single',
+                        'text' => "General Enquiries",
+                        'url' => '/enquiries/general/all'
+                    ]
+                ]
+            ],
+            'promotional' => [
+                'enable' => true,
+                'type' => 'dropdown',
+                'text' => 'Promotional',
+                'dropdown' => [
+                    'coupons' => [
+                        'enable' => true,
+                        'type' => 'single',
+                        'text' => "All Coupons",
+                        'url' => '/enquiries/franchise/all'
+                    ],
+                    'offers' => [
+                        'enable' => true,
+                        'type' => 'single',
+                        'text' => "All Offers",
+                        'url' => '/enquiries/general/all'
                     ]
                 ]
             ],
@@ -54,7 +92,6 @@ class DashboardControl extends CI_Model
                     ],
                 ]
             ],
-            
             'reviews' => [
                 'enable' => true,
                 'type' => 'single',
@@ -87,6 +124,15 @@ class DashboardControl extends CI_Model
                 ]
             ],
         ];
+
+        $parentMenu = $this->db->get_where('ecm_menu_mgmt', array('enable' => 'true', 'parent_id' => '0'))->result();
+        for ($i=0; $i < count($parentMenu); $i++) { 
+            $parentMenu[$i] = (array)$parentMenu[$i];
+            $childMenu = $this->db->get_where('ecm_menu_mgmt', array('enable' => 'true', 'parent_id' => $parentMenu[$i]['id']))->result();
+            echo '<pre>';
+            print_r((array)$childMenu);
+            die;
+        }
         $this->menu = json_encode($menuOptions);
         return $this->menu;
     }

@@ -22,6 +22,7 @@ class Auth extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		$this->load->model("auth/AuthorizerModel", 'auth');
 		$this->load->model("User");
 	}
 
@@ -29,8 +30,8 @@ class Auth extends CI_Controller
 	{
 		$form_data = $this->input->post();
 		$user = $this->User->authorize($form_data);
-		if (count($user)== 0) {
-			$this->session->set_flashdata('error','Login Failed');
+		if (count($user) == 0) {
+			$this->session->set_flashdata('error', 'Login Failed');
 			redirect($_SERVER['HTTP_REFERER']);
 		} else {
 			$_SESSION['user'] = $user;
@@ -52,5 +53,38 @@ class Auth extends CI_Controller
 	{
 		$this->session->sess_destroy();
 		redirect('/login');
+	}
+
+	public function loggedIn()
+	{
+		return true;
+	}
+
+	/**
+	 * USER RESTRICTIONS
+	 */
+	public function restrict($group = null, $single = null)
+	{
+		if ($group === null) {
+			if ($this->loggedIn() === true) {
+				return true;
+			} else {
+				$this->lang->load('errors');
+				$this->error->set_message('insufficient_privs');
+				$this->show_error();
+			}
+		} elseif ($this->loggedIn() === true) {
+			$level = $this->config->item('auth_groups')[$group];
+			$userLevel = $this->session->userdata('groupId');
+
+			if ($userLevel > $level || ($single === true && $userLevel !== $level)) {
+				$this->lang->load('errors');
+				$this->error->set_message('insufficient_privs');
+				$this->show_error();
+			}
+			return true;
+		} else {
+			redirect($this->config->item('auth_login'), 'refresh');
+		}
 	}
 }

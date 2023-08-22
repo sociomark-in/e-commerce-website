@@ -20,15 +20,83 @@
             <div class="navbar-nav">
                 <?php if ($this->session->user['role'] == "admin") : ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url('currency/all') ?>">Localization</a>
+                        <a class="nav-link" href="<?= base_url('currency/all') ?>" title="Localization & Currency">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                            </svg>
+                        </a>
                     </li>
                 <?php endif ?>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Notifications
                     </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
+                    <ul class="dropdown-menu widget-notification">
+                        <li>
+                            <a class="dropdown-item notification-item" href="#">
+                                <div class="notification-item-body">
+                                    <div class="row m-0 g-0 justify-content-between">
+                                        <div class="col-auto">
+                                            <div class="icon">
+                                                <img src="" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="content">
+                                                <strong>Lorem ipsum dolor sit</strong> amet consectetur adipisicing elit. Atque sed accusantium quidem. <strong>Quam, qui perferendis</strong>!
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="notification-item-footer">
+                                    <small class="text-muted"><?= date(SHORT_DATETIME) ?></small>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item notification-item" href="#">
+                                <div class="notification-item-body">
+                                    <div class="row m-0 g-0 justify-content-between">
+                                        <div class="col-auto">
+                                            <div class="icon">
+                                                <img src="" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="content">
+                                                <strong>Lorem ipsum dolor sit</strong> amet consectetur adipisicing elit. Atque sed accusantium quidem. <strong>Quam, qui perferendis</strong>!
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="notification-item-footer">
+                                    <small class="text-muted"><?= date(SHORT_DATETIME) ?></small>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item notification-item visited" href="#">
+                                <div class="notification-item-body">
+                                    <div class="row m-0 g-0 justify-content-between">
+                                        <div class="col-auto">
+                                            <div class="icon">
+                                                <img src="" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="content">
+                                                <strong>Lorem ipsum dolor sit</strong> amet consectetur adipisicing elit. Atque sed accusantium quidem. <strong>Quam, qui perferendis</strong>!
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="notification-item-footer">
+                                    <small class="text-muted"><?= date(SHORT_DATETIME) ?></small>
+                                </div>
+                            </a>
+                        </li>
                     </ul>
                 </li>
 
@@ -77,12 +145,14 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <?php load_menu($menu['users'], $menu['users']['type'],$menu['users']['enable']) ?>
-                <?php load_menu($menu['master'], $menu['master']['type'],$menu['master']['enable']) ?>
-                <?php load_menu($menu['categories'], $menu['categories']['type'],$menu['categories']['enable']) ?>
-                <?php load_menu($menu['orders-invoices'], $menu['orders-invoices']['type'],$menu['orders-invoices']['enable']) ?>
-                <?php load_menu($menu['reviews'], $menu['reviews']['type'],$menu['reviews']['enable']) ?>
-                <?php load_menu($menu['brands'], $menu['brands']['type'],$menu['brands']['enable']) ?>
+                <?php load_menu($menu['users'], $menu['users']['type'], $menu['users']['enable']) ?>
+                <?php load_menu($menu['master'], $menu['master']['type'], $menu['master']['enable']) ?>
+                <?php load_menu($menu['enquiries'], $menu['enquiries']['type'], $menu['enquiries']['enable']) ?>
+                <?php load_menu($menu['categories'], $menu['categories']['type'], $menu['categories']['enable']) ?>
+                <?php load_menu($menu['orders-invoices'], $menu['orders-invoices']['type'], $menu['orders-invoices']['enable']) ?>
+                <?php load_menu($menu['reviews'], $menu['reviews']['type'], $menu['reviews']['enable']) ?>
+                <?php load_menu($menu['brands'], $menu['brands']['type'], $menu['brands']['enable']) ?>
+                <?php load_menu($menu['promotional'], $menu['promotional']['type'], $menu['promotional']['enable']) ?>
             </ul>
         </div>
     </div>

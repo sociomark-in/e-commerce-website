@@ -26,6 +26,9 @@ class Pages extends CI_Controller
 			$id = $_SESSION['user']['id'];
 			$user = (array)$this->User->get($id);
 			$menu = json_decode($this->DashboardControl->menu_options(), 3);
+			echo '<pre>';
+			print_r($menu);
+			die;
 			$this->session->set_userdata(['user' => $user]);
 			$data = [
 				'page' => [

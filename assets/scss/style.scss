@@ -1,0 +1,146 @@
+nav.navbar {
+	.navbar-brand {
+		&.brand-logo {
+			background: url("../logo.png") no-repeat;
+			background-size: cover;
+			height: 30px;
+			width: 220px;
+		}
+	}
+	.nav-search {
+		width: 100%;
+	}
+}
+
+.btn-block {
+	display: block;
+	width: 100%;
+}
+
+.share_button {
+	.dropdown-menu {
+		min-width: 3.5rem;
+		text-align: center;
+	}
+}
+
+.icon_sprite {
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
+.delivery_options {
+	background: url("../sprites/delivery_options.png") no-repeat;
+	background-size: cover;
+	&.free_delivery_sprite_icon{
+		background-position: 0 0;
+	}
+}
+
+.icon-sprite-title {
+	span {
+		display: inline-block;
+	}
+}
+.product_offer_sprite {
+	background: url("../sprites/product_offer_status.png") no-repeat;
+	background-size: cover;
+	&.offer_icon {
+		width: 1.5rem;
+		height: 1.5rem;
+		background-position: 0px -1.5rem;
+	}
+}
+
+.badge {
+	background-color: darken($color: white, $amount: 3);
+	border: 1px solid darken($color: white, $amount: 10);
+	border-radius: 0.01rem;
+	color: black;
+	font-weight: 400;
+	.bdg-coupon {
+	}
+}
+main#productList {
+	img {
+		width: 150px;
+		height: 150px;
+		object-fit: contain;
+	}
+}
+main#productDetails {
+	.product__wrapper {
+		.media-content {
+			position: sticky;
+			top: 0;
+			left: 0;
+			.share_button {
+				position: absolute;
+				top: 1rem;
+				right: 1rem;
+				z-index: 10;
+			}
+		}
+	}
+	.main_gallery {
+	}
+	.gallery_thumbs {
+		img {
+			width: 100px;
+		}
+	}
+}
+a {
+	text-decoration: none;
+	color: initial;
+}
+.categories_filters {
+	position: sticky;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100%;
+	overflow-y: scroll;
+	.fltr_group {
+		legend {
+			font-size: 1rem;
+		}
+	}
+	.filter_apply_btn {
+		position: sticky;
+		top: 0;
+		left: 0;
+		width: 100%;
+		background-color: white;
+	}
+}
+.product {
+	.prdct_image {
+		background-color: #f0f0f0;
+	}
+	.prdct_name {
+		font-weight: 400;
+		font-size: 1.1rem;
+	}
+	.prdct_price {
+		h4 {
+			width: fit-content;
+			display: inline;
+		}
+	}
+}
+
+.pagination {
+	display: flex;
+	column-gap: 0.5rem;
+	padding: 1rem 0;
+	a,
+	strong {
+		padding: 0.25rem 0.75rem;
+		border-radius: 0.25rem;
+		background-color: rgb(230, 230, 230);
+	}
+	strong {
+		background-color: rgb(175, 175, 175);
+	}
+}

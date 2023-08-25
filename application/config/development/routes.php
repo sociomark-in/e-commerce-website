@@ -71,10 +71,9 @@ $route['register'] = 'Pages/register';
 // /ecm-admin/ routes
 $route[''] = 'Dashboard/index';
 $route['logout'] = 'auth/logout';
-$route['products'] = 'Products/index';
+$route['products/(:num)'] = 'Products/index/$1';
 $route['products/new'] = 'Products/new';
-$route['product/(:any)/edit'] = 'Products/edit/$1';
-$route['product/(:any)'] = 'Products/details/$1';
+$route['product/(:any)/dp/(:any)'] = 'Products/details/$1/$2';
 
 $route['cart'] = 'cart/index';
 $route['cart/checkout'] = 'Cart/checkout';

@@ -42,12 +42,7 @@ class Pages extends CI_Controller
 		$this->load->view('pages/register', $data);
 	}
 
-	public function test()
-	{
-		$this->load->view('pages/test');
-	}
 
-		
 	/**
 	 * do_upload
 	 * --------------------------------------
@@ -75,9 +70,9 @@ class Pages extends CI_Controller
 					$files[$index][$property] = $file;
 				}
 			}
-			for ($i=0; $i < count($files); $i++) { 
+			for ($i = 0; $i < count($files); $i++) {
 				print_r($files[$i]);
-				if (!$this->upload->do_upload("userfile['name'][".$i."]")) {
+				if (!$this->upload->do_upload("userfile['name'][" . $i . "]")) {
 					$error = array('error' => $this->upload->display_errors());
 					print_r($error);
 				} else {

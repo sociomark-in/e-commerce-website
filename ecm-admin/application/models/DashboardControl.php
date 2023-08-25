@@ -9,131 +9,24 @@ class DashboardControl extends CI_Model
 
     public function menu_options()
     {
-        $menuOptions = [
-            'users' => [
-                'enable' => true,
-                'type' => 'dropdown',
-                'text' => 'Users',
-                'dropdown' => [
-                    'customers' => [
-                        'enable' => true,
-                        'type' => 'single',
-                        'text' => "Customers",
-                        'url' => '/customers/all'
-                    ],
-                    'vendors' => [
-                        'enable' => true,
-                        'type' => 'single',
-                        'text' => "Vendors",
-                        'url' => '/vendors/all'
-                    ]
-                ]
-            ],
-            'enquiries' => [
-                'enable' => true,
-                'type' => 'dropdown',
-                'text' => 'Enquiries',
-                'dropdown' => [
-                    'customers' => [
-                        'enable' => true,
-                        'type' => 'single',
-                        'text' => "Franchise Enquiries",
-                        'url' => '/enquiries/franchise/all'
-                    ],
-                    'vendors' => [
-                        'enable' => true,
-                        'type' => 'single',
-                        'text' => "General Enquiries",
-                        'url' => '/enquiries/general/all'
-                    ]
-                ]
-            ],
-            'promotional' => [
-                'enable' => true,
-                'type' => 'dropdown',
-                'text' => 'Promotional',
-                'dropdown' => [
-                    'coupons' => [
-                        'enable' => true,
-                        'type' => 'single',
-                        'text' => "All Coupons",
-                        'url' => '/enquiries/franchise/all'
-                    ],
-                    'offers' => [
-                        'enable' => true,
-                        'type' => 'single',
-                        'text' => "All Offers",
-                        'url' => '/enquiries/general/all'
-                    ]
-                ]
-            ],
-            'categories' => [
-                'enable' => true,
-                'type' => 'single',
-                'text' => "Categories",
-                'url' => 'categories'
-            ],
-            'master' => [
-                'enable' => true,
-                'type' => 'dropdown',
-                'text' => 'Master',
-                'dropdown' => [
-                    'products' => [
-                        'enable' => true,
-                        'type' => 'single',
-                        'text' => "Products",
-                        'url' => '/products'
-                    ],
-                    'leads' => [
-                        'enable' => true,
-                        'type' => 'single',
-                        'text' => "Leads",
-                        'url' => '/leads'
-                    ],
-                ]
-            ],
-            'reviews' => [
-                'enable' => true,
-                'type' => 'single',
-                'text' => "Reviews",
-                'url' => '/reviews'
-            ],
-            'brands' => [
-                'enable' => true,
-                'type' => 'single',
-                'text' => "Brands",
-                'url' => '/brands'
-            ],
-            'orders-invoices' => [
-                'enable' => true,
-                'type' => 'dropdown',
-                'text' => 'Orders & Invoices',
-                'dropdown' => [
-                    'orders' => [
-                        'enable' => true,
-                        'type' => 'single',
-                        'text' => "All Orders",
-                        'url' => '/orders'
-                    ],
-                    'invoices' => [
-                        'enable' => true,
-                        'type' => 'single',
-                        'text' => "All Invoices",
-                        'url' => '/invoices'
-                    ]
-                ]
-            ],
-        ];
+        $master = [];
 
         $parentMenu = $this->db->get_where('ecm_menu_mgmt', array('enable' => 'true', 'parent_id' => '0'))->result();
-        for ($i=0; $i < count($parentMenu); $i++) { 
-            $parentMenu[$i] = (array)$parentMenu[$i];
-            $childMenu = $this->db->get_where('ecm_menu_mgmt', array('enable' => 'true', 'parent_id' => $parentMenu[$i]['id']))->result();
-            echo '<pre>';
-            print_r((array)$childMenu);
-            die;
+        // for ($i = 0; $i < count($parentMenu); $i++) {
+        foreach ($parentMenu as $parentKey => $parentValue) {
+            $parentValue = (array)$parentValue;
+            $master[$parentValue['identifier']] = [];
+            $master[$parentValue['identifier']] = $parentValue;
+            $this->db->order_by("priority", "asc");
+            $childMenu = $this->db->get_where('ecm_menu_mgmt', array('enable' => 'true', 'parent_id' => $parentValue['id']))->result();
+            $i = 0;
+            foreach ($childMenu as $key => $value) {
+                $value = (array)$value;
+                $master[$parentValue['identifier']][$parentValue['type']][$i] = $value;
+                $i++;
+            }
         }
-        $this->menu = json_encode($menuOptions);
+        $this->menu = json_encode($master);
         return $this->menu;
     }
 

@@ -145,14 +145,15 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <?php load_menu($menu['users'], $menu['users']['type'], $menu['users']['enable']) ?>
-                <?php load_menu($menu['master'], $menu['master']['type'], $menu['master']['enable']) ?>
-                <?php load_menu($menu['enquiries'], $menu['enquiries']['type'], $menu['enquiries']['enable']) ?>
-                <?php load_menu($menu['categories'], $menu['categories']['type'], $menu['categories']['enable']) ?>
-                <?php load_menu($menu['orders-invoices'], $menu['orders-invoices']['type'], $menu['orders-invoices']['enable']) ?>
+                <?php load_menu($menu['accounts'], $menu['accounts']['type'], $menu['accounts']['enable']) ?>
                 <?php load_menu($menu['reviews'], $menu['reviews']['type'], $menu['reviews']['enable']) ?>
-                <?php load_menu($menu['brands'], $menu['brands']['type'], $menu['brands']['enable']) ?>
-                <?php load_menu($menu['promotional'], $menu['promotional']['type'], $menu['promotional']['enable']) ?>
+                <?php load_menu($menu['enquiries'], $menu['enquiries']['type'], $menu['enquiries']['enable']) ?>
+                <?php load_menu($menu['products'], $menu['products']['type'], $menu['products']['enable']) ?>
+                <!-- <?php load_menu($menu['categories'], $menu['categories']['type'], $menu['categories']['enable']) ?> -->
+                <!-- <?php load_menu($menu['orders-invoices'], $menu['orders-invoices']['type'], $menu['orders-invoices']['enable']) ?> -->
+                <!-- <?php load_menu($menu['reviews'], $menu['reviews']['type'], $menu['reviews']['enable']) ?> -->
+                <!-- <?php load_menu($menu['brands'], $menu['brands']['type'], $menu['brands']['enable']) ?> -->
+                <!-- <?php load_menu($menu['promotional'], $menu['promotional']['type'], $menu['promotional']['enable']) ?> -->
             </ul>
         </div>
     </div>

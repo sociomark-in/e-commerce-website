@@ -15,6 +15,7 @@ function load_menu($menu, $type, $enable, $parent_type = "single")
                     "</a>
                     <ul class='dropdown-menu'>";
                 foreach ($menu['dropdown'] as $menuItem) {
+                    // print_r($menuItem);
                     load_menu($menuItem, $menuItem['type'], $menuItem['enable'], 'dropdown');
                 }
                 echo "</ul>

@@ -24,8 +24,37 @@ class CartHandler extends CI_Controller
 		 * 		- If False, load the cart from the session and prompt user to login.
 		 * 
 		 */
-		print_r($this->CartModel->count_all());
-		print_r($this->cart->contents());
+
+		$dc = [];
+		$count = [];
+		$cart = [];
+
+		$cart_content = $this->cart->contents();
+		for ($i = 0; $i < count($cart_content); $i++) {
+			array_push($count, $i);
+		}
+		
+		$dc = array_combine($count, $cart_content);
+		foreach ($dc as $key => $value) {
+			
+			$product = $this->ProductModel->get_where(['id' => $value['id']]);
+
+			$cart = array_merge($cart, [
+				$key => [
+
+					'cart' => $value,
+					'product' => json_decode($product, true, 4)
+				]
+			]);
+		}
+		$data['cart_contents'] = $cart;
+		$data['page'] = [
+			"title" => "Cart Page"
+		];
+		// print_r($this->CartModel->count_all());
+		// print_r();
+
+		$this->load->view('pages/cart/home', $data);
 	}
 
 	public function confirm()

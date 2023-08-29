@@ -236,9 +236,9 @@
                                                 </div>
                                                 <div class="prdct_price">
                                                     <?php if ($product['discount_price'] == "") : ?>
-                                                        <h4><sup>&#8377;</sup><?= $product['actual_price']?></h4>
+                                                        <h4><sup>&#8377;</sup><?= number_to_amount($product['actual_price'], 0)?></h4>
                                                     <?php else : ?>
-                                                        <h4><sup>&#8377;</sup><?= $product['discount_price'] ?></h4>&nbsp;<?= $product['actual_price'] ?>
+                                                        <h4><sup>&#8377;</sup><?= number_to_amount($product['discount_price'], 0) ?></h4>&nbsp;<?= number_to_currency($product['actual_price'], "INR", 0) ?>
                                                     <?php endif ?>
                                                     <div class="prdct_extra_off">
                                                         <div class="text-muted"><span class="badge badge-coupon">Save 10&percnt; with Coupon</span>&nbsp;Save extra with No Cost EMI</div>

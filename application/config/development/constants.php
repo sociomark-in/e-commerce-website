@@ -2,6 +2,8 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 defined('APP_NAME') OR define('APP_NAME', "Commercio");
+
+defined('APP_LOCALE') OR define('APP_LOCALE', "en_IN");
 /*
 |--------------------------------------------------------------------------
 | Display Debug backtrace

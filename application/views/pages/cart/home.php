@@ -134,6 +134,7 @@
         </div>
     </main>
     <footer>
+        <?php $this->load->view('components/_common_footer') ?>
         <div class="container">
             <div class="sign-in">
                 <div class="row g-0 justify-content-center">

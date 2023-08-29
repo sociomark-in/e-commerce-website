@@ -229,14 +229,14 @@
                                                 </div>
                                             </div>
                                             <div class="col-md col-12">
-                                                <h4 class="prdct_name"><a href="<?= base_url("product/") . random_string() ."/dp/" . $product['product_id'] ?>?ref=product_list" target="_blank"><?= $product['name'] ?></a></h4>
+                                                <h4 class="prdct_name"><a href="<?= base_url("product/") . random_string() . "/dp/" . $product['product_id'] ?>?ref=product_list" target="_blank"><?= $product['name'] ?></a></h4>
                                                 <div class="prdct_ratings">
                                                     <?= $product['ratings'] ?><i class="fa-solid fa-star mx-2"></i>
                                                     <a href=""><?= $product['ratings_count'] ?></a>
                                                 </div>
                                                 <div class="prdct_price">
                                                     <?php if ($product['discount_price'] == "") : ?>
-                                                        <h4><sup>&#8377;</sup><?= number_to_amount($product['actual_price'], 0)?></h4>
+                                                        <h4><sup>&#8377;</sup><?= number_to_amount($product['actual_price'], 0) ?></h4>
                                                     <?php else : ?>
                                                         <h4><sup>&#8377;</sup><?= number_to_amount($product['discount_price'], 0) ?></h4>&nbsp;<?= number_to_currency($product['actual_price'], "INR", 0) ?>
                                                     <?php endif ?>
@@ -265,6 +265,9 @@
             </div>
         </div>
     </main>
+    <footer>
+        <?php $this->load->view('components/_common_footer') ?>
+    </footer>
     <?php $this->load->view('components/_common_js') ?>
 </body>
 

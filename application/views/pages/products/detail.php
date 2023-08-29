@@ -160,6 +160,9 @@
             </pre>
         </div>
     </main>
+    <footer>
+        <?php $this->load->view('components/_common_footer') ?>
+    </footer>
     <?php $this->load->view('components/_common_js') ?>
     <script src="<?= base_url('assets/js/snippets.js') ?>"></script>
     <script>

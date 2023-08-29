@@ -1,10 +1,18 @@
+$color-brand: #349852;
+
+
+a{
+	text-decoration: none;
+	color: $color-brand;
+}
+
 nav.navbar {
 	.navbar-brand {
 		&.brand-logo {
 			background: url("../logo.png") no-repeat;
 			background-size: cover;
 			height: 30px;
-			width: 220px;
+			width: 260px;
 		}
 	}
 	.nav-search {
@@ -90,9 +98,10 @@ main#productDetails {
 		}
 	}
 }
-a {
-	text-decoration: none;
-	color: initial;
+main{
+	a {
+		color: initial;
+	}
 }
 .categories_filters {
 	position: sticky;

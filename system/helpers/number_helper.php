@@ -39,6 +39,8 @@
  */
 defined('BASEPATH') or exit('No direct script access allowed');
 
+defined('APP_LOCALE') OR define('APP_LOCALE', "en_IN");
+
 /**
  * CodeIgniter Number Helpers
  *

@@ -14,6 +14,8 @@ class CartHandler extends CI_Controller
 		$this->load->model("CartModel");
 		$this->load->model("ProductModel");
 		$this->load->library('cart');
+
+		$this->load->helper('string');
 	}
 
 	public function index()

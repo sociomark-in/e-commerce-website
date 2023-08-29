@@ -134,19 +134,20 @@
         </div>
     </main>
     <footer>
-        <?php $this->load->view('components/_common_footer') ?>
-        <div class="container">
+        <div class="container mb-3">
+            <!-- If User is not Signed In -->
             <div class="sign-in">
                 <div class="row g-0 justify-content-center">
                     <div class="col-xl-6 col-md-8 col-10">
                         <div class="text-center">
-                            <p>See Peronalised Recommendations</p>
+                            <p>See Personalised Recommendations</p>
                             <a class="btn btn-sm btn-primary mb-2">Sign&nbsp;In</a>
                             <p><small>New Customer?&nbsp;<a href="">Start Here</a></small></p>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- END -->
             <div class="disclaimer">
                 <small>
                     The price and availability of items at Amazon.in are subject to change. The shopping cart is a temporary place to store a list of your items and reflects each item's most recent price.
@@ -154,6 +155,7 @@
                 </small>
             </div>
         </div>
+        <?php $this->load->view('components/_common_footer') ?>
     </footer>
     <?php $this->load->view('components/_common_js') ?>
 </body>

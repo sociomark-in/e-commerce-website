@@ -75,8 +75,9 @@ $route['products/(:num)'] = 'Products/index/$1';
 $route['products/new'] = 'Products/new';
 $route['product/(:any)/dp/(:any)'] = 'Products/details/$1/$2';
 
-$route['cart'] = 'cart/index';
-$route['cart/checkout'] = 'Cart/checkout';
+$route['cart'] = 'CartHandler/index';
+$route['cart/empty'] = 'CartHandler/empty';
+$route['cart/checkout'] = 'CartHandler/checkout';
 
 $route['ecm-admin/payment/(:any)'] = 'Payment/status/$1';
 

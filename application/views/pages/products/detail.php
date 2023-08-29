@@ -84,17 +84,17 @@
                                         </div>
                                         <div class="row m-0">
                                             <div class="col-md-6 col-12 p-0">
-                                            <div class="card">
-                                            <div class="card-body">
-                                                <ul class="nav gap-2">
-                                                    <?php for ($i=0; $i < 6; $i++) : ?>
-                                                    <li class="nav-item">
-                                                        <div class="icon_sprite delivery_options free_delivery_sprite_icon"></div>
-                                                    </li>
-                                                    <?php endfor?>
-                                                </ul>
-                                            </div>
-                                        </div>
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <ul class="nav gap-2">
+                                                            <?php for ($i = 0; $i < 6; $i++) : ?>
+                                                                <li class="nav-item">
+                                                                    <div class="icon_sprite delivery_options free_delivery_sprite_icon"></div>
+                                                                </li>
+                                                            <?php endfor ?>
+                                                        </ul>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -127,21 +127,28 @@
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-4 col-12">
+                    <?php if (null !== $this->session->flashdata("cart_success")) : ?>
+                        <div class="alert alert-success alert-dismissible mb-3" role="alert">
+                            <div class="d-flex gap-2">
+                                <img src="<?= (null !== $this->session->flashdata("cart_product_id")) ? $product['image'] : "" ?>" alt="" width="30">
+                                <div class="">Added to <a href="<?= base_url('cart') ?>" class="alert-link">Cart</a></div>
+                            </div>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    <?php endif ?>
+                    <div class="alert-wrapper" id="alertWrapper">
+
+                    </div>
                     <div class="price_offers__wrapper card">
                         <div class="card-body">
-                            <form action="" method="post">
+                            <form id="checkoutForm" action="" method="post">
                                 <div class="mb-3">
-                                    <input type="hidden" name="">
-                                    <input type="submit" value="Add to Cart" class="btn btn-block btn-secondary">
+                                    <button type="button" class="btn btn-block btn-secondary" id="addToCart">Add to Cart</button>
                                 </div>
-                            </form>
-                            <form action="" method="post">
                                 <div class="mb-3">
-                                    <input type="hidden" name="">
                                     <input type="submit" value="Buy Now" class="btn btn-block btn-primary">
                                 </div>
                             </form>
-                            <form action="" method="post"></form>
                         </div>
                     </div>
                 </div>
@@ -154,6 +161,47 @@
         </div>
     </main>
     <?php $this->load->view('components/_common_js') ?>
+    <script src="<?= base_url('assets/js/snippets.js') ?>"></script>
+    <script>
+        $(document).ready(function() {
+            // BUY NOW
+            var targetUrl = "<?php echo base_url(); ?>CartHandler/add";
+            const formData = JSON.stringify({
+                'id': "<?= $product['id'] ?>"
+            });
+
+            $("#checkoutForm").submit((event) => {
+                /* Add to Cart First */
+                $.ajax({
+                    type: "POST",
+                    url: targetUrl,
+                    data: formData,
+                    dataType: 'json',
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function() {
+                        addAlert('Added to Cart', 'success');
+                        console.log("Product Added");
+                    },
+                    error: function(data) {
+                        addAlert('Failed to Add', 'danger');
+                        console.log("Product Add Failed", data);
+                    }
+                });
+                event.preventDefault();
+                /* Go to Checkout URL*/
+
+            });
+
+            // ADD TO CART
+            $('#addToCart').click(() => {
+                console.log(formData);
+                addToCart(targetUrl, formData)
+                event.preventDefault();
+            });
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script>
         var swiper = new Swiper(".main_gallery", {

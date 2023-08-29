@@ -2,7 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 defined('APP_NAME') OR define('APP_NAME', "Commercio");
-defined('SHORT_DATETIME') OR define('SHORT_DATETIME', 'h:i:s A');
 defined('BASE_LOCALE')  OR define('BASE_LOCALE', 'INR');
 /*
 |--------------------------------------------------------------------------

@@ -8,7 +8,7 @@ class User extends CI_Model
 
     public function get($id)
     {
-        $result = $this->db->get_where('ecm_users',array('id' => $id ))->result()[0];
+        $result = $this->db->query("SELECT * FROM `ecm_users` WHERE `id` = '" . $id . "'")->result()[0];
         return $result;
     }
 

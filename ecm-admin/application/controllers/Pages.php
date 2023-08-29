@@ -19,23 +19,13 @@ class Pages extends CI_Controller
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/userguide3/general/urls.html
 	 */
-
-	public function __construct()
-	{
-		parent::__construct();
-		$this->load->model('entities/SearchModel', 'SearchModel');
-	}
-	
 	public function index()
 	{
 		$this->load->model("User");
 		if (isset($_SESSION['user'])) {
 			$id = $_SESSION['user']['id'];
 			$user = (array)$this->User->get($id);
-			$menu = json_decode($this->DashboardControl->menu_options(), true);
-			echo '<pre>';
-			print_r($this->SearchModel->get_search_results('tooth'));
-			die;
+			$menu = json_decode($this->DashboardControl->menu_options(), 3);
 			$this->session->set_userdata(['user' => $user]);
 			$data = [
 				'page' => [

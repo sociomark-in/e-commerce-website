@@ -32,7 +32,17 @@ class Auth extends CI_Controller
 		if (count($user)== 0) {
 		} else {
 			$_SESSION['user'] = $user;
-			redirect("/");
+			switch ($user['role']) {
+				case 'admin':
+					# code...
+					redirect("/ecm-admin");
+					break;
+				
+				default:
+					# code...
+					redirect("/");
+					break;
+			}
 		}
 	}
 

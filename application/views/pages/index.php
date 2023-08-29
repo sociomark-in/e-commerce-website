@@ -12,6 +12,9 @@
     <main>
         Home Page
     </main>
+    <footer>
+        <?php $this->load->view('components/_common_footer') ?>
+    </footer>
     <?php $this->load->view('components/_common_js') ?>
 </body>
 
